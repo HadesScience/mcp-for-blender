@@ -559,6 +559,38 @@ env = { BLENDER_HOST = "localhost", BLENDER_PORT = "9876" }
 
 ### Antigravity
 
+You can install MCP for Blender in Antigravity either as a **standalone toggleable plugin** (recommended — appears in Customizations with its own icon and on/off switch) or as a **global MCP server** in `~/.gemini/config/mcp_config.json`.
+
+#### Antigravity plugin (recommended)
+
+Copy `integrations/antigravity/plugins/mcp-for-blender` into Antigravity's global plugins directory (`~/.gemini/config/plugins/mcp-for-blender`, or `%USERPROFILE%\.gemini\config\plugins\mcp-for-blender` on Windows):
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/HadesScience/mcp-for-blender.git blender-mcp
+Copy-Item -Path ".\blender-mcp\integrations\antigravity\plugins\mcp-for-blender" `
+  -Destination "$env:USERPROFILE\.gemini\config\plugins\mcp-for-blender" -Recurse -Force
+
+agy plugin validate "$env:USERPROFILE\.gemini\config\plugins\mcp-for-blender" --strict --json
+agy plugin list
+```
+
+**macOS / Linux:**
+
+```bash
+git clone https://github.com/HadesScience/mcp-for-blender.git blender-mcp
+mkdir -p ~/.gemini/config/plugins
+cp -R ./blender-mcp/integrations/antigravity/plugins/mcp-for-blender ~/.gemini/config/plugins/mcp-for-blender
+
+agy plugin validate ~/.gemini/config/plugins/mcp-for-blender --strict --json
+agy plugin list
+```
+
+Restart Antigravity (or refresh Customizations / MCP Servers) and start a new chat; the tools load under `mcp-for-blender_mcp-for-blender`.
+
+#### Plain MCP server (`~/.gemini/config/mcp_config.json`)
+
 ```json
 {
   "mcpServers": {

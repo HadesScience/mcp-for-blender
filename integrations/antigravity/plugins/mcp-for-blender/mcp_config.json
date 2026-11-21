@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "mcp-for-blender": {
+      "command": "uvx",
+      "args": [
+        "mcp-for-blender"
+      ]
+    }
+  }
+}
